@@ -56,8 +56,8 @@ const enterCafe = () => {
     lofi.play().catch(() => {});
   }
   // 🔥 smooth transition
-  fadeAudio(rain, 0.2, 1500);  // rain fade down
-  fadeAudio(lofi, 0.4, 1500);  // lofi fade in
+  fadeAudio(rain, 0.4, 1500);  // rain fade down
+  fadeAudio(lofi, 0.8, 1500);  // lofi fade in
 };
 
   const exitCafe = () => {

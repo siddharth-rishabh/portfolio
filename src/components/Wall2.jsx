@@ -7,6 +7,8 @@ export default function Wall2({ setScene, toggleMusic, musicOn, exitCafe}) {
   const [showPlus, setShowPlus] = useState(false);
   const [time, setTime] = useState(0);
   const [showProjects, setShowProjects] = useState(false);
+    const [hovered, setHovered] = useState(null);
+
 
   const clickAudio = useRef(null);
 
@@ -135,18 +137,30 @@ export default function Wall2({ setScene, toggleMusic, musicOn, exitCafe}) {
 
       {/* ⬅️ BACK */}
       <div
-        className="back-hitbox z-20"
-        onClick={() => setScene("interior")}
-      ></div>
+  className="back-hitbox z-20"
+  onMouseEnter={() => setHovered("back")}
+  onMouseLeave={() => setHovered(null)}
+  onClick={() => setScene("interior")}
+>
+  {hovered === "back" && (
+    <div className="nav-label left">← Back</div>
+  )}
+</div>
 
      {showPlus && (
   <div
-    className="exit-hitbox"
-    onClick={() => {
-      exitCafe();        // 🔥 handle audio
-      setScene("landing"); // 🔥 change scene
-    }}
-  ></div>
+  className="exit-hitbox"
+  onMouseEnter={() => setHovered("exit")}
+  onMouseLeave={() => setHovered(null)}
+  onClick={() => {
+    exitCafe();
+    setScene("landing");
+  }}
+>
+  {hovered === "exit" && (
+    <div className="nav-label right">Exit →</div>
+  )}
+</div>
 )}
     </div>
   );

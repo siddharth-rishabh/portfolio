@@ -30,7 +30,7 @@ export default function Landing({ setScene, enterCafe, startExperience, hasEnter
     </button>
   </div>
 )}
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-screen overflow-hidden landing-overlay">
       <video
         src="/cafe.mp4"
         autoPlay
@@ -58,19 +58,22 @@ export default function Landing({ setScene, enterCafe, startExperience, hasEnter
     transition: "opacity 0.3s ease"
   }}
 >
+  <div className="landing-text">
+
         <h1 className="landing-title text-4xl md:text-3xl font-bold tracking-wide">
   Siddharth Karn
 </h1>
 
-<p className="opacity-90 text-m md:text-m mt-2">
+<p className="opacity-90 text-m md:text-m mt-2 landing-subtitle">
 Full Stack Developer | 
 crafting digital experiences
 </p>
 
-<p className="opacity-70 text-sm md:text-s mt-1">
+<p className="opacity-70 text-sm md:text-s mt-1 landing-scroll">
   Scroll to enter ↓
 </p>
       </div>
+  </div>
         <div
   className="plus contact-plus"
   onClick={() => setShowContact(true)}

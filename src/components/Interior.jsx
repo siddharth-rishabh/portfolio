@@ -5,6 +5,7 @@ export default function Interior({ setScene }) {
   const [activeSection, setActiveSection] = useState(null);
   const audioRef = useRef(null);
   const [showPlus, setShowPlus] = useState(false);
+  const [hovered, setHovered] = useState(null);
   const [showAbout, setShowAbout] = useState(false);
 
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -224,18 +225,29 @@ export default function Interior({ setScene }) {
 {/* ⬅️ BACK NAVIGATION */}
 {showPlus && (
   <div
-    className="back-hitbox"
-    onClick={() => setScene("landing")} 
-  ></div>
+  className="back-hitbox"
+  onMouseEnter={() => setHovered("back")}
+  onMouseLeave={() => setHovered(null)}
+  onClick={() => setScene("landing")}
+>
+  {hovered === "back" && (
+    <div className="nav-label left">← Back</div>
+  )}
+</div>
 )}
       {/* GO TO WALL2 */}
      {/* ➡️ GO TO WALL2 */}
 {showPlus && (
   <div
-     className="exit-hitbox"
+  className="exit-hitbox"
+  onMouseEnter={() => setHovered("next")}
+  onMouseLeave={() => setHovered(null)}
   onClick={() => setScene("wall2")}
-  >
-  </div>
+>
+  {hovered === "next" && (
+    <div className="nav-label right">Next →</div>
+  )}
+</div>
 )}
 
       <audio ref={audioRef} src="/click.mp3" />
